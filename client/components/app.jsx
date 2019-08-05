@@ -28,8 +28,9 @@ class App extends Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       // user is now logged in
+      
       this.setState({ isSignedIn: !!user });
-      console.log("user test", user.displayName, user.email);
+      console.log("user test", user);
       const fullName = user.displayName.split(' ');
       const [firstname,lastname] = [fullName[0],fullName[1]];
       const email = user.email;

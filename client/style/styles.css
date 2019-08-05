@@ -1,3 +1,9 @@
+.App {
+  /* background: url("backG.gif") center;
+  background-size: 100%; */
+  background-color: black;
+
+}
 h1 {
   color: red;
   text-align: center;
@@ -17,15 +23,28 @@ h1 {
   align-items: center;
   justify-content: center;
   color: blue;
-  font-size: 1.5em;
+  font-size: 2em;
+  height: 800px;
+  background: url("plas.jpg") center;
+  background-size: 100%;
 }
 
 .circle {
   text-align: center;
-  justify-content: center;
+  /* justify-content: center;
   align-items: center;
-  border: 2px solid red;
+  align-self: center; */
+  position: absolute;
+  left: 50%;
+  top: 57%;
+  transform: translate(-50%,-50%);
+  min-height: 350px;
+  min-width: 350px;
+  border: 2px solid blue;
   border-radius: 50%;
   padding: 10px;
   margin: 5px;
+  box-shadow: 5px 5px 5px blue;
+  background-color: black;
+  color: white;
 }
