@@ -17,6 +17,7 @@ class Board extends Component {
     // eventaully we will change the logic so that only 4 people go to each circle
     // we need to add this conditional, otherwise we will get errors trying to access props
     // since we need to wait for componentDidMount in parent to update state
+    let activity;
     if(people.length!==0) {
       // for(let i = 0; i < people.length; i+=4){
       //   let sub = people.slice(i,i+4);
@@ -28,11 +29,13 @@ class Board extends Component {
         people.splice(idx, 1);
         peeps.push(rand);
       }
+      activity = this.props.activities[Math.floor(Math.random() * 4)];
       // circle = <Circle group={sub}/>;
     }
     return (
       <div className="board">
-        {peeps.length!==0 ? (<Circle group={peeps}/>): loading}
+
+        {peeps.length!==0 ? (<Circle act={activity} group={peeps}/>): loading}
       </div>
     );
   }

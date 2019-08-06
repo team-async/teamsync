@@ -1,13 +1,19 @@
-.App {
-  /* background: url("backG.gif") center;
-  background-size: 100%; */
-  background-color: black;
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
 }
 h1 {
-  color: red;
+  color: #777;
   text-align: center;
-  box-shadow: 5px 5px 5px gray;
+  padding: 20px;
+  border-bottom: 1px solid #777
 }
 
 #signin {
@@ -25,9 +31,20 @@ h1 {
   color: blue;
   font-size: 2em;
   height: 800px;
-  background: url("plas.jpg") center;
+  background: white;
   background-size: 100%;
 }
+
+.home {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 
 .circle {
   text-align: center;
@@ -38,13 +55,47 @@ h1 {
   left: 50%;
   top: 57%;
   transform: translate(-50%,-50%);
-  min-height: 350px;
-  min-width: 350px;
-  border: 2px solid blue;
+  min-height: 500px;
+  min-width: 500px;
   border-radius: 50%;
   padding: 10px;
   margin: 5px;
-  box-shadow: 5px 5px 5px blue;
-  background-color: black;
+  box-shadow: 5px 5px 5px black;
+  background-image: linear-gradient(#2A5298, #1e3c72);
   color: white;
 }
+
+.text {
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+.activity {
+  animation-duration: 6s;
+  animation-name: slidein;
+}
+
+.subheading {
+ text-align: center;
+  color: #777;
+  margin-bottom: 200px;
+}
+
+.homepage-header {
+  text-align: center;
+  
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+
