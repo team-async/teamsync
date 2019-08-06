@@ -25,7 +25,8 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = { isSignedIn: false,
-                    people: []
+                    people: [],
+                    activities: ['Walk to the Beach', 'Lunch', 'Coffee', 'Play Board Games']
                   };
     }
    
@@ -45,9 +46,9 @@ class App extends Component {
     
     firebase.auth().onAuthStateChanged(user => {
       // user is now logged in
+      
       this.setState({ isSignedIn: !!user });
-      console.log("user test", user.displayName, user.email);
-     
+      console.log("user test", user);
       const fullName = user.displayName.split(' ');
       const [firstname,lastname] = [fullName[0],fullName[1]];
       const email = user.email;
@@ -57,49 +58,6 @@ class App extends Component {
         email
       };
 
-    //  gapi.load = (e) => {
-      console.log("gapi here: ", gapi.client);
-    //  }
-    //  gapi.load = (e)=> {
-    //    console.log('gapi.load')
-    // window.onload = 
-    //   function handleClientLoad(){
-    //     gapi.load('client:auth2', initClient);
-    //   }
-    // function initClient(){
-    //   gapi.client.init({
-    //     apiKey: config.apiKey,
-    //     clientId: config.clientId,
-    //     discoveryDocs: config.discoveryDocs,
-    //     scope: config.scopes.join(' '),
-    //   })
-    //   // Loading is finished, so start the app
-    //   .then(function() {
-    //    // Make sure the Google API Client is properly signed in
-    //    if (gapi.auth2.getAuthInstance().isSignedIn.get()) {
-    //      startApp(user);
-    //    } else {
-    //      firebase.auth().signOut(); // Something went wrong, sign out
-    //    }
-    //   })}
-
-    //   function startApp(user) {
-    //     console.log(`start app: ${user}`);
-    //     firebase.auth().currentUser.getToken()
-    //     .then(function(token) {
-    //       return gapi.client.calendar.events.list({
-    //        calendarId: "primary",
-    //        timeMin: new Date().toISOString(),
-    //        showDeleted: false,
-    //        singleEvents: true,
-    //        maxResults: 10,
-    //        orderBy: "startTime"
-    //       })  
-    //      })
-    //     .then(function(response) {
-    //       console.log(`start App response: ${response}`);  
-    //     });
-      // }
       // send post request to our server with user's info as the body
       fetch('/main',{
         method: 'POST',
@@ -118,33 +76,6 @@ class App extends Component {
    
   };
 
-  getEvents(){
-    let that = this;
-
-    function start() {
-      gapi.client.init({
-        'apiKey': config.apiKey
-      }).then(function() {
-        
-        return gapi.client.request({
-          'path': `https://www.googleapis.com/calendar/v3/calendars/taylor.burrington%40gmail.com/events`,
-        })
-      }).then( (response) => {
-        console.log("response", response)
-        let events = response.result.items
-        that.setState({
-          events
-        }, ()=>{
-          console.log(that.state.events);
-        })
-      }, function(reason) {
-        console.log(reason);
-      });
-    }
-  
-    gapi.load('client', start)
-  }
-
   render() {
 
     
@@ -153,18 +84,27 @@ class App extends Component {
 
     return (
       <div className="App">
+         
         {this.state.isSignedIn ? (
-          <span>
-            <div>Signed In!</div>
+          <div>
+            <h1 className="header">Welcome {firebase.auth().currentUser.displayName} 
             <Button variant="contained" color="primary" onClick={() => firebase.auth().signOut()}>Sign out!</Button>
-            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-            <Board people={this.state.people}/>
-          </span>
+            </h1>
+            <h3 className="subheading">This Week's Picks are...</h3>
+            <Board activities={this.state.activities} people={this.state.people}/>
+          </div>
         ) : (
-          <StyledFirebaseAuth
+        
+        <div className="home">
+           <h1 id="header">TEAMSYNC</h1>
+      
+        <h3 className="homepage-header">Sign in for endless team bonding possibilities...</h3>
+          <StyledFirebaseAuth 
             uiConfig={this.uiConfig}
             firebaseAuth={firebase.auth()}
           />
+          
+      </div>
         )}
       </div>
     );

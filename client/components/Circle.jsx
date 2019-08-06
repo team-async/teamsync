@@ -7,9 +7,15 @@ class Circle extends Component {
 
   render(){
     // we might be getting 4 people instead of 1, then we can figure out how to display each circle
+    const display = [];
+    const group = this.props.group;
+    for (let i = 0; i < group.length; i++){
+      display.push(<p className="text">{group[i].firstname} {group[i].lastname}</p>)
+    }
     return (
       <div className='circle'>
-        <p>{this.props.person.firstname} {this.props.person.lastname}</p>
+        {display}
+        <p className="activity">Activity: {this.props.act}</p>
       </div>
     );
   }
