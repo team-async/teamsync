@@ -36,9 +36,6 @@ h1 {
 }
 
 .home {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -48,9 +45,6 @@ h1 {
 
 .circle {
   text-align: center;
-  /* justify-content: center;
-  align-items: center;
-  align-self: center; */
   position: absolute;
   left: 50%;
   top: 57%;
