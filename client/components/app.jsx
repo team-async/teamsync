@@ -8,9 +8,9 @@ import Button from "@material-ui/core/Button";
 //Using firebase and Google's API for Oauth and Calendar access require a config with these details.
 const config = {
   //your personal api keys and clientId go here. 
-  apiKey: process.env.REACT_APP_apiKey,
+  apiKey: "AIzaSyAzK49FT1nwhi8-BLl2kRtZvFnVtvWsH9A",
   authDomain: "team-sync-248717.firebaseapp.com",
-  clientId: process.env.REACT_APP_clientId,
+  clientId: '996183924139-j2d6i9ekcu9rs8tbt7k5osf03bkrgosq.apps.googleusercontent.com',
   scopes: ["email", "profile", "https://www.googleapis.com/auth/calendar"],
   discoveryDocs: [
     "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"
